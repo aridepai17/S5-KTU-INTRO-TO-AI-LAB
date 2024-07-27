@@ -1,0 +1,41 @@
+def DFS(graph, start, visited = None):
+    if visited is None:
+        visited = set()
+
+    order = []
+
+    if start not in visited:
+        order.append(start)
+        visited.add(start)
+        print('-----------------------------')
+        print(f"Order: { order }")
+        print(f"Visited : { visited }")
+
+        for node in graph[start]:
+            if node not in visited:
+                order.extend(DFS(graph, node, visited))
+
+        return order
+
+graph = { 'A':['B','C'] , 'B':['A','D','E'] , 'C':['A','F','G'] , 'D':['B'] , 'E':['B'] , 'F':['C'] , 'G':['C'] }
+DFS(graph, 'A')
+
+
+def DFS(graph, start, visited = None):
+    if visited is None:
+        visited = set()
+
+    order = []
+
+    if start not in visited:
+        order.append(start)
+        visited.add(start)
+
+        for node in graph[start]:
+            if node not in visited:
+                order.extend(DFS(graph, node, visited))
+
+        return order
+
+graph = { 'A':['B','C'] , 'B':['A','D','E'] , 'C':['A','F','G'] , 'D':['B'] , 'E':['B'] , 'F':['C'] , 'G':['C'] }
+DFS(graph, 'A')
